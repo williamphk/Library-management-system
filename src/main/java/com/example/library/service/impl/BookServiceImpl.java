@@ -48,22 +48,11 @@ public class BookServiceImpl implements BookService {
         Book book = bookRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Book not found with id: " + id));
 
-        // Update only non-null fields
-        if (bookDetails.getTitle() != null) {
-            book.setTitle(bookDetails.getTitle());
-        }
-        if (bookDetails.getAuthor() != null) {
-            book.setAuthor(bookDetails.getAuthor());
-        }
-        if (bookDetails.getIsbn() != null) {
-            book.setIsbn(bookDetails.getIsbn());
-        }
-        if (bookDetails.getCategory() != null) {
-            book.setCategory(bookDetails.getCategory());
-        }
-        if (bookDetails.getPublicationYear() != null) {
-            book.setPublicationYear(bookDetails.getPublicationYear());
-        }
+        book.setTitle(bookDetails.getTitle());
+        book.setAuthor(bookDetails.getAuthor());
+        book.setIsbn(bookDetails.getIsbn());
+        book.setCategory(bookDetails.getCategory());
+        book.setPublicationYear(bookDetails.getPublicationYear());
 
         return bookRepository.save(book);
     }
