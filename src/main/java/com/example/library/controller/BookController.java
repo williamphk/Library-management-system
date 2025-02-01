@@ -69,4 +69,42 @@ public class BookController {
                 ? ResponseEntity.noContent().build()
                 : ResponseEntity.ok(books);
     }
+
+    @GetMapping("/available")
+    public ResponseEntity<List<Book>> getAvailableBooks() {
+        List<Book> books = bookService.getAvailableBooks();
+        return books.isEmpty()
+                ? ResponseEntity.noContent().build()
+                : ResponseEntity.ok(books);
+    }
+
+    @GetMapping("/category/{category}")
+    public ResponseEntity<List<Book>> getBooksByCategory(@PathVariable String category) {
+        List<Book> books = bookService.getBooksByCategory(category);
+        return books.isEmpty()
+                ? ResponseEntity.noContent().build()
+                : ResponseEntity.ok(books);
+    }
+
+    @GetMapping("/{id}/available")
+    public ResponseEntity<Boolean> isBookAvailable(@PathVariable Long id) {
+        try {
+            boolean available = bookService.isBookAvailable(id);
+            return ResponseEntity.ok(available);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PutMapping("/{id}/availability")
+    public ResponseEntity<?> updateBookAvailability(
+            @PathVariable Long id,
+            @RequestParam boolean available) {
+        try {
+            bookService.updateBookAvailability(id, available);
+            return ResponseEntity.ok().build();
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
