@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -25,6 +25,7 @@ public class BorrowRecord {
     @JoinColumn(name = "user_id")
     private User user;
 
-    private LocalDate borrowDate;
-    private LocalDate returnDate;
+    private LocalDateTime borrowDate;
+    private LocalDateTime expectedReturnDate;
+    private LocalDateTime returnDate;
 }
