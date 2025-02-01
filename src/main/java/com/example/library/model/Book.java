@@ -6,6 +6,9 @@ import lombok.Setter;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import java.time.LocalDate;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Getter
@@ -17,8 +20,21 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     private String title;
+
+    @NotBlank
     private String author;
+
     private String isbn;
-    private LocalDate publishedDate;
+
+    private String category;
+
+    private Integer publicationYear;
+
+    @NotNull
+    private Boolean available = true;
+
+    @OneToMany(mappedBy = "book")
+    private List<BorrowRecord> borrowRecords;
 }
