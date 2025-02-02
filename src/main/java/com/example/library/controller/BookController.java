@@ -78,9 +78,9 @@ public class BookController {
                 : ResponseEntity.ok(books);
     }
 
-    @GetMapping("/category/{category}")
-    public ResponseEntity<List<Book>> getBooksByCategory(@PathVariable String category) {
-        List<Book> books = bookService.getBooksByCategory(category);
+    @GetMapping("/genre/{genre}")
+    public ResponseEntity<List<Book>> getBooksByGenre(@PathVariable String genre) {
+        List<Book> books = bookService.getBooksByGenre(genre);
         return books.isEmpty()
                 ? ResponseEntity.noContent().build()
                 : ResponseEntity.ok(books);

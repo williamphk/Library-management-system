@@ -19,7 +19,7 @@ public interface BookService {
 
     List<Book> getAvailableBooks();
 
-    List<Book> getBooksByCategory(String category);
+    List<Book> getBooksByGenre(String genre);
 
     boolean isBookAvailable(Long id);
 

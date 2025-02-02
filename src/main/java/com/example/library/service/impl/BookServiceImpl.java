@@ -51,7 +51,8 @@ public class BookServiceImpl implements BookService {
         book.setTitle(bookDetails.getTitle());
         book.setAuthor(bookDetails.getAuthor());
         book.setIsbn(bookDetails.getIsbn());
-        book.setCategory(bookDetails.getCategory());
+        book.setGenre(bookDetails.getGenre());
+        book.setAvailable(bookDetails.isAvailable());
         book.setPublicationYear(bookDetails.getPublicationYear());
 
         return bookRepository.save(book);
@@ -71,8 +72,8 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<Book> getBooksByCategory(String category) {
-        return bookRepository.findByCategory(category);
+    public List<Book> getBooksByGenre(String genre) {
+        return bookRepository.findByGenre(genre);
     }
 
     @Override
