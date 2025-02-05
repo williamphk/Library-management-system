@@ -46,7 +46,7 @@ public class BorrowRecordServiceImpl implements BorrowRecordService {
         var book = bookRepository.findById(borrowRecord.getBook().getId())
                 .orElseThrow(() -> new ResourceNotFoundException("Book not found"));
 
-        if (!book.isAvailable()) {
+        if (!book.getAvailable()) {
             throw new IllegalStateException("Book is not available for borrowing");
         }
 

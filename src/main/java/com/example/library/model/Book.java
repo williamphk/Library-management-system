@@ -33,7 +33,7 @@ public class Book {
     private Integer publicationYear;
 
     @NotNull
-    private boolean available;
+    private Boolean available;
 
     @OneToMany(mappedBy = "book")
     private List<BorrowRecord> borrowRecords;

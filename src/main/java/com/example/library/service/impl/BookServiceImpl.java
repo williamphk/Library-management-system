@@ -64,8 +64,8 @@ public class BookServiceImpl implements BookService {
             book.setGenre(bookDetails.getGenre());
         }
 
-        if (bookDetails.isAvailable() != null) {
-            book.setAvailable(bookDetails.isAvailable());
+        if (bookDetails.getAvailable() != null) {
+            book.setAvailable(bookDetails.getAvailable());
         }
 
         if (bookDetails.getPublicationYear() != null) {
@@ -96,7 +96,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public boolean isBookAvailable(Long id) {
         return bookRepository.findById(id)
-                .map(Book::isAvailable)
+                .map(Book::getAvailable)
                 .orElseThrow(() -> new ResourceNotFoundException("Book not found with id: " + id));
     }
 
