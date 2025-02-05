@@ -6,6 +6,8 @@ import lombok.Setter;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import java.time.LocalDateTime;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Getter
@@ -19,6 +21,7 @@ public class BorrowRecord {
 
     @ManyToOne
     @JoinColumn(name = "book_id")
+    @JsonIgnoreProperties("borrowRecords")
     private Book book;
 
     @ManyToOne
